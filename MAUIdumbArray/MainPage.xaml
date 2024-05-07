@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIdumbArray.MainPage"
+             Padding="30">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25">
+            <HorizontalStackLayout Spacing="30">
+
+                <!-- Секция параметров массива -->
+                
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Параметры массива" Style="{StaticResource SubHeadline}"
+                           HorizontalOptions="Start" />
+                    <HorizontalStackLayout Spacing="25">
+                        <Label Text="Количество строк: " WidthRequest="{Binding Path=Width, Source={x:Reference ColsLabel}}"
+                               VerticalOptions="Center" />
+                        <Label Text="{Binding Path=Value, Source={x:Reference RowsStep}}"
+                               VerticalOptions="Center" />
+                        <Stepper x:Name="RowsStep" Minimum="2" Maximum="1000"
+                                 VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="25">
+                        <Label Text="Количество столбцов: " x:Name="ColsLabel"
+                               VerticalOptions="Center" />
+                        <Label Text="{Binding Path=Value, Source={x:Reference ColsStep}}"
+                               VerticalOptions="Center" />
+                        <Stepper x:Name="ColsStep" Minimum="2" Maximum="1000"
+                                 VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <!-- Секция управляющих кнопок -->
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Действия" Style="{StaticResource SubHeadline}"
+                           HorizontalOptions="Start" />
+                    <HorizontalStackLayout Spacing="25">
+                        <Button Text="Создать" Clicked="OnArrayCreateClick"
+                                ToolTipProperties.Text="Создать массив заданного размера и заполнить его нулями"/>
+                        <Button Text="Показать" Clicked="OnArrayShowClick"
+                                ToolTipProperties.Text="Вывести на экран текущие значения из массива" />
+                        <Button Text="Считать" Clicked="OnArrayInputClick"
+                                ToolTipProperties.Text="Перенести значения с экрана в массив, нераспознанные значения заменяются нулями" />
+                        <Button Text="Random" Clicked="OnArrayRandomClick"
+                                ToolTipProperties.Text="Заполнить массив случайными числами от 1 до 1000" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <!-- Секция содержимого массива -->
+
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Массив" Style="{StaticResource SubHeadline}"
+                       HorizontalOptions="Start" />
+                <Grid x:Name="ArrayGrid" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
